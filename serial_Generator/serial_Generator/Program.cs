@@ -11,10 +11,14 @@ namespace serial_Generator
         static void kapcsolodas()
         {
             Connect c = new Connect();
+            c.querySelect();
         }
+
+        
         static void Main(string[] args)
         {
             kapcsolodas();
+           
         }
     }
 }
