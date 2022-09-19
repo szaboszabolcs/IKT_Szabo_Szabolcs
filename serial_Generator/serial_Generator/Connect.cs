@@ -11,7 +11,7 @@ namespace serial_Generator
     class Connect
     {
         public MySqlConnection connection;
-        
+
         string db;      //Database name
         string srv;     //Database Server
         string usr;     //User
@@ -45,7 +45,7 @@ namespace serial_Generator
         public void querySelect()
         {
             string qry = "SELECT `id`,`razon`, `active` FROM `serial` ORDER BY `id` ASC;";
-            MySqlCommand cmd = new MySqlCommand(qry,connection);
+            MySqlCommand cmd = new MySqlCommand(qry, connection);
 
             MySqlDataReader datareaderSelect = cmd.ExecuteReader();
             datareaderSelect.Read();
@@ -53,11 +53,26 @@ namespace serial_Generator
             do
             {
                 Console.Write(datareaderSelect.GetValue(0).ToString() + "-");
-                Console.Write(datareaderSelect.GetValue(1).ToString()+"-");
+                Console.Write(datareaderSelect.GetValue(1).ToString() + "-");
                 Console.WriteLine(datareaderSelect.GetValue(2).ToString());
-            } while (datareaderSelect.Read()==true);
+            } while (datareaderSelect.Read() == true);
 
             datareaderSelect.Close();
+
+        }
+        public void queryDelete(int id)
+        {
+            try
+            {
+                string qry = "DELETE FROM `serial` WHERE `id`=" + id;
+                MySqlCommand cmd = new MySqlCommand(qry, connection);
+                MySqlDataReader datareaderDelete = cmd.ExecuteReader();
+                datareaderDelete.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
