@@ -36,7 +36,7 @@ namespace serial_Generator
             try
             {
                 connection.Open();
-                MessageBox.Show("Sikeres csatlakozás!");
+                //MessageBox.Show("Sikeres csatlakozás!");
                 
                 
             }
