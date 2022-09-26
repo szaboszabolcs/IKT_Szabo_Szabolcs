@@ -30,5 +30,63 @@ namespace serialGeneratorGUI
 
             dr.Close();
         }
+
+        public void dbCreate()
+        {
+            Random rnd = new Random();
+
+            try
+            {
+                string qry = "INSERT INTO `serial`( `razon`, `active` ) VALUES ('" + rnd.Next(1000000,1000000) + ", 1);";
+
+                MySqlCommand cmd = new MySqlCommand(qry, c.connection);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                dbCreate();
+            }
+        }
+
+        public void dbDelete(ListBox listboxForm1)
+        {
+            /*textbox5.Text = listboxForm1.SelectedIndex.ToString();
+            MessageBox.Show(listboxForm1.Items[listboxForm1.SelectedIndex].ToString());*/
+            string[] split = listboxForm1.Items[listboxForm1.SelectedIndex].ToString().Split('-');
+            string qry = "DELETE FROM serial WHERE id=" + split[0];
+            MySqlCommand cmd = new MySqlCommand(qry, c.connection);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        string id;
+
+        public void textPaste(ListBox listboxForm1, TextBox textbox3, TextBox textbox4)
+        {
+            string[] split = listboxForm1.Items[listboxForm1.SelectedIndex].ToString().Split('-');
+
+            textbox3.Text = split[1];
+            textbox4.Text = split[2];
+
+            id = split[0];
+        }
+
+        public void dbUpdate(TextBox textbox3, TextBox textbox4)
+        {
+            try
+            {
+                string qry = "UPDATE `serial` SET `razon`='" + textbox3.Text + "'," + "`active`=" + textbox4.Text + " " + "WHERE id=" + id;
+
+                MySqlCommand cmd = new MySqlCommand(qry, c.connection);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+        }
     }
-}
+} 
