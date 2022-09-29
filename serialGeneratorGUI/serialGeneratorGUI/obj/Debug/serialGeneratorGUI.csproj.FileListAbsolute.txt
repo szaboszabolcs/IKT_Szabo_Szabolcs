@@ -68,3 +68,9 @@ C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGenerat
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\obj\Debug\serialGeneratorGUI.csproj.CopyComplete
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\obj\Debug\serialGeneratorGUI.exe
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\obj\Debug\serialGeneratorGUI.pdb
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\bin\Debug\PdfSharp.Charting.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\bin\Debug\PdfSharp.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\bin\Debug\PdfSharp.xml
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\bin\Debug\PdfSharp.Charting.xml
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\serialGeneratorGUI\serialGeneratorGUI\bin\Debug\de\PdfSharp.Charting.resources.dll

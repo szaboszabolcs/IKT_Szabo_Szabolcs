@@ -39,7 +39,7 @@ namespace serialGenaratorGUI
             try
             {
                 string qry = "INSERT INTO `serial`(`razon`, `active`) " +
-                       "VALUES ('" + rnd.Next(100000, 10000000).ToString() + "', 1);";
+                       "VALUES ('" + rnd.Next(100000, 1000000).ToString() + "', 1);";
 
                 MySqlCommand cmd = new MySqlCommand(qry, c.connection);
 
