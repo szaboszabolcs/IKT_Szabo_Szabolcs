@@ -7,21 +7,22 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
-namespace serialGeneratorGUI
+
+namespace serialGenaratorGUI
 {
     internal class Queries
     {
         Connect c = new Connect();
-        
-       
+
         public void dbRead(ListBox listboxForm1)
         {
-            string qry = "SELECT `id`,`razon`, `active` FROM `serial`;";
+            listboxForm1.Items.Clear();
+
+            string qry = "SELECT `id`,`razon`,`active` FROM `serial`;";
 
             MySqlCommand cmd = new MySqlCommand(qry, c.connection);
 
             MySqlDataReader dr = cmd.ExecuteReader();
-
 
             while (dr.Read())
             {
@@ -37,23 +38,26 @@ namespace serialGeneratorGUI
 
             try
             {
-                string qry = "INSERT INTO `serial`( `razon`, `active` ) VALUES ('" + rnd.Next(1000000,1000000) + ", 1);";
+                string qry = "INSERT INTO `serial`(`razon`, `active`) " +
+                       "VALUES ('" + rnd.Next(100000, 10000000).ToString() + "', 1);";
 
                 MySqlCommand cmd = new MySqlCommand(qry, c.connection);
 
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch
             {
                 dbCreate();
             }
+
         }
 
         public void dbDelete(ListBox listboxForm1)
         {
-            /*textbox5.Text = listboxForm1.SelectedIndex.ToString();
+            /*textbox3.Text = listboxForm1.SelectedIndex.ToString();
             MessageBox.Show(listboxForm1.Items[listboxForm1.SelectedIndex].ToString());*/
             string[] split = listboxForm1.Items[listboxForm1.SelectedIndex].ToString().Split('-');
+
             string qry = "DELETE FROM serial WHERE id=" + split[0];
             MySqlCommand cmd = new MySqlCommand(qry, c.connection);
 
@@ -61,22 +65,23 @@ namespace serialGeneratorGUI
         }
 
         string id;
-
-        public void textPaste(ListBox listboxForm1, TextBox textbox3, TextBox textbox4)
+        public void textPaste(ListBox listboxForm1, TextBox textbox1, TextBox textbox2)
         {
             string[] split = listboxForm1.Items[listboxForm1.SelectedIndex].ToString().Split('-');
 
-            textbox3.Text = split[1];
-            textbox4.Text = split[2];
+            textbox1.Text = split[1];
+            textbox2.Text = split[2];
 
             id = split[0];
+
         }
 
-        public void dbUpdate(TextBox textbox3, TextBox textbox4)
+        public void dbUpdate(TextBox textbox1, TextBox textbox2)
         {
             try
             {
-                string qry = "UPDATE `serial` SET `razon`='" + textbox3.Text + "'," + "`active`=" + textbox4.Text + " " + "WHERE id=" + id;
+                string qry = "UPDATE `serial` SET `razon`='" + textbox1.Text + "'," +
+                "`active`=" + textbox2.Text + " " + "WHERE id=" + id;
 
                 MySqlCommand cmd = new MySqlCommand(qry, c.connection);
 
@@ -84,9 +89,10 @@ namespace serialGeneratorGUI
             }
             catch (Exception e)
             {
+
                 MessageBox.Show(e.Message);
             }
-            
+
         }
     }
-} 
+}
