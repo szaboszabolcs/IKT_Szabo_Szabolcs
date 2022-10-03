@@ -37,14 +37,15 @@ namespace serialGeneratorGUI
                 h = h+12;
             }
 
-            //Specify file name of the PDF file
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "pdf";
+            dlg.Filter = "Pdf files (*.pdf)|*.pdf |Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            dlg.ShowDialog();
 
-            
-
-            //string filename = "SerialPDFDocument.pdf";
-            //Save PDF File
-
+            string filename = dlg.FileName;
+            document.Save(filename);
             //Load PDF File for viewing
+            Process.Start(filename);
 
         }
     }
