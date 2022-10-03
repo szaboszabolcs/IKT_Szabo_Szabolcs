@@ -1,0 +1,15 @@
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\bin\Debug\net6.0\Bank.exe
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\bin\Debug\net6.0\Bank.deps.json
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\bin\Debug\net6.0\Bank.runtimeconfig.json
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\bin\Debug\net6.0\Bank.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\bin\Debug\net6.0\Bank.pdb
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.csproj.AssemblyReference.cache
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.AssemblyInfoInputs.cache
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.AssemblyInfo.cs
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.csproj.CoreCompileInputs.cache
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\refint\Bank.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.pdb
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\Bank.genruntimeconfig.cache
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Bank\Bank\obj\Debug\net6.0\ref\Bank.dll
