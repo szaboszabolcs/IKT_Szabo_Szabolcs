@@ -1,0 +1,7 @@
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\bin\Gyak_WCF.dll.config
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\bin\Gyak_WCF.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\bin\Gyak_WCF.pdb
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\obj\Debug\Gyak_WCF.csproj.AssemblyReference.cache
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\obj\Debug\Gyak_WCF.csproj.CoreCompileInputs.cache
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\obj\Debug\Gyak_WCF.dll
+C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Gyak_WCF\Gyak_WCF\obj\Debug\Gyak_WCF.pdb
