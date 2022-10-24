@@ -9,49 +9,57 @@ using System.Text;
 
 namespace Payment_wcf
 {
-    
+
     [ServiceContract]
     public interface IService1
     {
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerAdata"
-            )]
-        Customer EgyCustomerGet();
-
+        // GET lekérés //
         [OperationContract]
 
         Customer EgyCustomerGetCS();
 
-        [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerHozzaAdas"
-            )]
-        Customer EgyCustomerPost();
+            UriTemplate = "/EgyCustomerGet/")]
 
+        Customer EgyCustomerGet();
+        //--------------------------//
+
+
+        // POST lekérés //
         [OperationContract]
 
         Customer EgyCustomerPostCS();
 
+        [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            UriTemplate = "/EgyCustomerPost/")]
+
+        Customer EgyCustomerPost();
+        // ------------------------- //
+
+
+
+        // Customers lista kialakítása //
         [OperationContract]
         [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/Customers"
+            UriTemplate = "/Customers/"
             )]
         List<Customer> CustomersListaja();
+        // ---------------------------  //
+
 
         [OperationContract]
+        List<Customer> CustomerListajaCS();
 
-        List<Customer> CustomersListajaCS();
-
+        // Egy vásárló hozzáadása //
         [OperationContract]
 
         string EgyCustomerAddCS(Customer customer);
@@ -61,86 +69,50 @@ namespace Payment_wcf
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerAdd"
+            UriTemplate = "/EgyCustomerAdd/"
             )]
-
         string EgyCustomerAdd(Customer customer);
+        // -------------------------------//
+
+
+        // Adat módosítása //
 
         [OperationContract]
-
-        string EgyCustomerPutCS(Customer customer);
-
-        [OperationContract]
-        [WebInvoke(Method = "PUT",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerModosit"
+        [WebInvoke(Method ="PUT",
+            RequestFormat =WebMessageFormat.Json,
+            ResponseFormat =WebMessageFormat.Json,
+            BodyStyle =WebMessageBodyStyle.WrappedRequest,
+            UriTemplate = "/EgyCustomerModosit/"
             )]
-
         string EgyCustomerPut(Customer customer);
+        // --------------- //
 
-        [OperationContract]
 
-        string EgyCustomerPatchCS(Customer customer);
-
-        [OperationContract]
-        [WebInvoke(Method = "PATCH",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerModosit2"
-            )]
-
-        string EgyCustomerPatch(Customer customer);
+        // Adat törlése //
 
         [OperationContract]
 
         string EgyCustomerDeleteCS(int ID);
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerTorol"
+        [WebInvoke(Method ="DELETE",
+            RequestFormat =WebMessageFormat.Json,
+            ResponseFormat =WebMessageFormat.Json,
+            BodyStyle =WebMessageBodyStyle.WrappedRequest,
+            UriTemplate = "/EgyCustomerTorol/"
             )]
-
         string EgyCustomerDelete(int ID);
 
         [OperationContract]
         [WebInvoke(Method = "DELETE",
-           RequestFormat = WebMessageFormat.Json,
-           ResponseFormat = WebMessageFormat.Json,
-           BodyStyle = WebMessageBodyStyle.WrappedRequest,
-           UriTemplate = "/EgyCustomerTorol?ID={ID}"
-           )]
-
-        string EgyCustomerDeleteID(int ID);
-
-        [OperationContract]
-        Customer EgyCustomerGetIDCS(int ID);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/EgyCustomerGetID?ID={ID}"
+            UriTemplate = "/EgyCustomerTorol?ID={ID}"
             )]
-        Customer EgyCustomerGetID(int ID);
 
+        string EgyCustomerDeleteID(int ID);
 
-
-    }
-
-    [DataContract]
-    
-    public class Sor
-    {
-        [DataMember]
-
-        public int? ID { get; set; }
     }
 
     [DataContract]
@@ -154,10 +126,14 @@ namespace Payment_wcf
 
         public string Varos { get; set; }
 
-        [OperationContract]
-        public override string ToString()
-        {
-            return $"ID: {ID}\nNév: {Nev}\nVáros: {Varos}";
-        }
+    }
+
+
+    [DataContract]
+    public class Sor
+    {
+        [DataMember]
+
+        public int? ID { get; set; }
     }
 }

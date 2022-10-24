@@ -8,3 +8,13 @@ C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debu
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Newtonsoft.Json.dll
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Newtonsoft.Json.xml
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debug\Payment_wcf.csproj.CopyComplete
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Payment_wcf.dll.config
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Payment_wcf.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Payment_wcf.pdb
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Newtonsoft.Json.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Newtonsoft.Json.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debug\Payment_wcf.csproj.AssemblyReference.cache
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debug\Payment_wcf.csproj.CoreCompileInputs.cache
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debug\Payment_wcf.csproj.CopyComplete
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debug\Payment_wcf.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\obj\Debug\Payment_wcf.pdb

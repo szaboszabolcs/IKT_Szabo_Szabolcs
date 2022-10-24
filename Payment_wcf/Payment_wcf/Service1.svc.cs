@@ -32,7 +32,7 @@ namespace Payment_wcf
             }
             return -1;
         }
-        public Customer EgyCustomerGet()
+        public Customer EgyCustomerGetCS()
         {
             Customer customer = new Customer();
             customer.ID = 1;
@@ -42,34 +42,32 @@ namespace Payment_wcf
             return customer;
         }
 
-        public Customer EgyCustomerGetCS()
+        public Customer EgyCustomerGet()
         {
-            return EgyCustomerGet();
-        }
-
-        public Customer EgyCustomerPost()
-        {
-            Customer customer = new Customer();
-            customer.ID = random.Next(1, 10001);
-            customer.Nev = "Péter";
-            customer.Varos = "Budapest";
-            customerLista.Add(customer);
-            Console.WriteLine("Működik a post");
-            return customer;
+            return EgyCustomerGetCS();
         }
 
         public Customer EgyCustomerPostCS()
         {
-            return EgyCustomerPost();
+            Customer customer = new Customer();
+            customer.ID = 2;
+            customer.Nev = "Péter";
+            customer.Varos = "Budapest";
+            Console.WriteLine("Adatok");
+            return customer;
+        }
+
+        public Customer EgyCustomerPost()
+        {
+            return EgyCustomerPostCS();
         }
 
         public List<Customer> CustomersListaja()
         {
-            Console.WriteLine("Kutyalista lekérve");
             return customerLista;
         }
 
-        public List<Customer> CustomersListajaCS()
+        public List<Customer> CustomerListajaCS()
         {
             return CustomersListaja();
         }
@@ -86,7 +84,7 @@ namespace Payment_wcf
                     return "Adat hozzáadása sikeres.";
                 }
             }
-            return "Az adat hozzáadás sikertelen!";
+            return "Az adat hozzáadása sikertelen!";
         }
 
         public string EgyCustomerAdd(Customer customer)
@@ -110,24 +108,11 @@ namespace Payment_wcf
                     }
                 }
             }
-            return "Adatok módosítása sikertelen";
+            return "Adatok módosítása sikertelen!";
         }
 
-        public string EgyCustomerPut(Customer customer)
+        public string EgyCustomerPut (Customer customer)
         {
-            Console.WriteLine(customer);
-            return EgyCustomerPutCS(customer);
-        }
-
-        public string EgyCustomerPatchCS(Customer customer)
-        {
-            Console.WriteLine(customer);
-            return EgyCustomerPutCS(customer);
-        }
-
-        public string EgyCustomerPatch(Customer customer)
-        {
-            Console.WriteLine(customer);
             return EgyCustomerPutCS(customer);
         }
 
@@ -148,28 +133,6 @@ namespace Payment_wcf
                 }
             }
             return "Adatok törlése sikertelen";
-        }
-
-        public Customer EgyCustomerGetIDCS(int ID)
-        {
-            if (ID != null)
-            {
-                int id = (int)ID;
-                if (customerIndex.Contains(id))
-                {
-                    int index = Pozicio(id);
-                    if (index != -1)
-                    {
-                        return customerLista[index];
-                    }
-                }
-            }
-            return null;
-        }
-
-        public Customer EgyCustomerGetID(int ID)
-        {
-            return EgyCustomerGetIDCS(ID);
         }
 
         public string EgyCustomerDelete(int ID)
