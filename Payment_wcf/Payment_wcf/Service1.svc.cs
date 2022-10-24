@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Web;
 using System.Text;
-using Newtonsoft.Json;
+
 
 namespace Payment_wcf
 {
@@ -32,11 +32,42 @@ namespace Payment_wcf
             }
             return -1;
         }
+
+        public List<Customer> CustomerListaDB()
+        {
+            List<Customer> customerList = new List<Customer>();
+            DatabaseManager.ISQL tableCustomerManager = new DatabaseManager.CustomerManager();
+            List<Sor> sorok = tableCustomerManager.Select();
+            foreach (Sor egySor in sorok)
+            {
+                if (egySor is Customer)
+                {
+                    customerList.Add(egySor as Customer);
+                }
+            }
+            return customerList;
+        }
+
+        public string KutyaPostDB(Customer customer)
+        {
+            DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
+            if (tableCustomerManager.Insert(customer) > 0)
+            {
+                return "A kutya adatainak a tárolása sikeresen megtörtént.";
+            }
+            else
+            {
+                return "A kutya adatainak a tárolása sikertelen!";
+            }
+        }
+
+
         public Customer EgyCustomerGetCS()
         {
             Customer customer = new Customer();
             customer.ID = 1;
             customer.Nev = "Józsi";
+            customer.Eletkor = 35;
             customer.Varos = "Miskolc";
             Console.WriteLine("Adatok lekérve...");
             return customer;
@@ -52,6 +83,7 @@ namespace Payment_wcf
             Customer customer = new Customer();
             customer.ID = 2;
             customer.Nev = "Péter";
+            customer.Eletkor = 35;
             customer.Varos = "Budapest";
             Console.WriteLine("Adatok");
             return customer;

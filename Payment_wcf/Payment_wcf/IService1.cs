@@ -13,6 +13,26 @@ namespace Payment_wcf
     [ServiceContract]
     public interface IService1
     {
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           UriTemplate = "/CustomerListaDB/"
+           )]
+        List<Customer> CustomerListaDB();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
+            UriTemplate = "/CustomerPostDB/"
+            )]
+        string KutyaPostDB(Customer customer);
+
+
+
         // GET lekérés //
         [OperationContract]
 
@@ -78,10 +98,10 @@ namespace Payment_wcf
         // Adat módosítása //
 
         [OperationContract]
-        [WebInvoke(Method ="PUT",
-            RequestFormat =WebMessageFormat.Json,
-            ResponseFormat =WebMessageFormat.Json,
-            BodyStyle =WebMessageBodyStyle.WrappedRequest,
+        [WebInvoke(Method = "PUT",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
             UriTemplate = "/EgyCustomerModosit/"
             )]
         string EgyCustomerPut(Customer customer);
@@ -95,10 +115,10 @@ namespace Payment_wcf
         string EgyCustomerDeleteCS(int ID);
 
         [OperationContract]
-        [WebInvoke(Method ="DELETE",
-            RequestFormat =WebMessageFormat.Json,
-            ResponseFormat =WebMessageFormat.Json,
-            BodyStyle =WebMessageBodyStyle.WrappedRequest,
+        [WebInvoke(Method = "DELETE",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
             UriTemplate = "/EgyCustomerTorol/"
             )]
         string EgyCustomerDelete(int ID);
@@ -116,6 +136,12 @@ namespace Payment_wcf
     }
 
     [DataContract]
+    public class Sor
+    {
+        [DataMember]
+
+        public int? ID { get; set; }
+    }
 
     public class Customer : Sor
     {
@@ -124,16 +150,17 @@ namespace Payment_wcf
 
         [DataMember(IsRequired = true)]
 
+        public int Eletkor { get; set; }
+
+        [DataMember(IsRequired = true)]
+
         public string Varos { get; set; }
 
-    }
+        [OperationContract]
 
-
-    [DataContract]
-    public class Sor
-    {
-        [DataMember]
-
-        public int? ID { get; set; }
+        public override string ToString()
+        {
+            return $"ID: {ID}\nNév: {Nev}\nEletkor: {Eletkor}\n Varos {Varos}";
+        }
     }
 }
