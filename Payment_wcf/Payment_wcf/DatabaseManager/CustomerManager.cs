@@ -84,12 +84,73 @@ namespace Payment_wcf.DatabaseManager
 
         public int Update(Sor sor)
         {
-            return 0;
+            Customer customer = sor as Customer;
+            MySqlCommand command = new MySqlCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = @"UPDATE customer SET Name=@Name, Age=@Age, City=@City WHERE Id=@Id";
+            command.Parameters.Add(new MySqlParameter("Id", customer.ID));
+            command.Parameters.Add(new MySqlParameter("Name", customer.Nev));
+            command.Parameters.Add(new MySqlParameter("Age", customer.Eletkor));
+            command.Parameters.Add(new MySqlParameter("City", customer.Varos));
+            int modositottSorokSzama = 0;
+            command.Connection = BaseDatabaseManager.connection;
+            try
+            {
+                command.Connection.Open();
+                try
+                {
+                    modositottSorokSzama = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Nem tudta módosítani!");
+                    Console.WriteLine(ex.Message);
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Nem tudta megnyitni!");
+                Console.WriteLine(ex.Message);
+                return -2;
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+            command.Parameters.Clear();
+            return modositottSorokSzama;
         }
 
         public int Delete(int id)
         {
-            return 0;
+            MySqlCommand command = new MySqlCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = @"DELETE FROM customer WHERE Id=@Id";
+            command.Parameters.Add(new MySqlParameter("Id", id));
+            command.Connection = BaseDatabaseManager.connection;
+            int toroltSorokSzama = 0;
+            try
+            {
+                command.Connection.Open();
+                try
+                {
+                    toroltSorokSzama = command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return -1;
+                }
+            }
+            catch
+            {
+                return -2;
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+            return toroltSorokSzama;
         }
     }
 }

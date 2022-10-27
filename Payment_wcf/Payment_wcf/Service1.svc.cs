@@ -33,6 +33,7 @@ namespace Payment_wcf
             return -1;
         }
 
+        // Adatbázisból lekérdezés //
         public List<Customer> CustomerListaDB()
         {
             List<Customer> customerList = new List<Customer>();
@@ -48,20 +49,66 @@ namespace Payment_wcf
             return customerList;
         }
 
-        public string KutyaPostDB(Customer customer)
+        // Hozzáadás Adatbázisban //
+        public string CustomerPostDB(Customer customer)
         {
             DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
             if (tableCustomerManager.Insert(customer) > 0)
             {
-                return "A kutya adatainak a tárolása sikeresen megtörtént.";
+                return "A vásárló adatainak a tárolása sikeresen megtörtént.";
             }
             else
             {
-                return "A kutya adatainak a tárolása sikertelen!";
+                return "A vásárló adatainak a tárolása sikertelen!";
             }
         }
 
+        public string CustomerPostDBCS(Customer customer)
+        {
+            return CustomerPostDB(customer);
+        }
 
+        // Módosítás adatbázisban //
+
+        public string CustomerPutDB(Customer customer)
+        {
+            DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
+            if (tableCustomerManager.Update(customer) > 0)
+            {
+                return "A vásárló adatainak a módosítása sikeresen megtörtént.";
+            }
+            else
+            {
+                return "A vásárló adatainak a módosítása sikertelen!";
+            }
+        }
+
+        public string CustomerPutDBCS(Customer customer)
+        {
+            return CustomerPostDB(customer);
+        }
+
+        // Törlés adatbázisban //
+
+        public string CustomerDeleteDB(int id)
+        {
+            DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
+            if (tableCustomerManager.Delete(id) > 0)
+            {
+                return "A kutya adatainak a törlése sikeres megtörtént.";
+            }
+            else
+            {
+                return "A kutya adatainak a törlése sikertelen!";
+            }
+        }
+
+        public string CustomerDeleteDBCS(int id)
+        {
+            return CustomerDeleteDB(id);
+        }
+
+       
         public Customer EgyCustomerGetCS()
         {
             Customer customer = new Customer();

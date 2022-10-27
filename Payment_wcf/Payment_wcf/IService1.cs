@@ -13,6 +13,7 @@ namespace Payment_wcf
     [ServiceContract]
     public interface IService1
     {
+        // Adatok lekérése adatbázisból //
         [OperationContract]
         [WebInvoke(Method = "GET",
            RequestFormat = WebMessageFormat.Json,
@@ -22,6 +23,7 @@ namespace Payment_wcf
            )]
         List<Customer> CustomerListaDB();
 
+        // Adatok hozzáadása adatbázisból //
         [OperationContract]
         [WebInvoke(Method = "POST",
             RequestFormat = WebMessageFormat.Json,
@@ -29,8 +31,39 @@ namespace Payment_wcf
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             UriTemplate = "/CustomerPostDB/"
             )]
-        string KutyaPostDB(Customer customer);
+        string CustomerPostDB(Customer customer);
 
+        [OperationContract]
+        string CustomerPostDBCS(Customer customer);
+
+        // Adatok módosítása adatbázisból //
+        [OperationContract]
+        [WebInvoke(Method = "PUT",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           UriTemplate = "/CustomerPutDB/"
+           )]
+        string CustomerPutDB(Customer customer);
+
+        [OperationContract]
+
+        string CustomerPutDBCS(Customer customer);
+
+        // Adatok törlése adatbázisból //
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           UriTemplate = "/CustomerDeleteDB?id={id}"
+           )]
+        string CustomerDeleteDB(int id);
+
+        [OperationContract]
+
+        string CustomerDeleteDBCS(int id);
 
 
         // GET lekérés //
