@@ -57,7 +57,7 @@ namespace Payment_wcf
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-           UriTemplate = "/CustomerDeleteDB?id={id}"
+           UriTemplate = "/CustomerDeleteDB?Id={Id}"
            )]
         string CustomerDeleteDB(int id);
 

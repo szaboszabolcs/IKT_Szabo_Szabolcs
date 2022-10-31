@@ -95,11 +95,11 @@ namespace Payment_wcf
             DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
             if (tableCustomerManager.Delete(id) > 0)
             {
-                return "A kutya adatainak a törlése sikeres megtörtént.";
+                return "A vásárló adatainak törlése sikeresen megtörtént.";
             }
             else
             {
-                return "A kutya adatainak a törlése sikertelen!";
+                return "A vásárló adatainak törlése sikertelen!";
             }
         }
 

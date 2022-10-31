@@ -40,3 +40,25 @@ C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Syst
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Memory.xml
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Numerics.Vectors.xml
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\BouncyCastle.Crypto.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Google.Protobuf.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\K4os.Compression.LZ4.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\K4os.Compression.LZ4.Streams.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\K4os.Hash.xxHash.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\MySql.Data.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Buffers.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Memory.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Numerics.Vectors.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\ZstdNet.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\BouncyCastle.Crypto.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Google.Protobuf.pdb
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\Google.Protobuf.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\K4os.Compression.LZ4.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\K4os.Compression.LZ4.Streams.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\K4os.Hash.xxHash.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\MySql.Data.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Buffers.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Memory.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Numerics.Vectors.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\Payment_wcf\Payment_wcf\bin\System.Runtime.CompilerServices.Unsafe.xml
