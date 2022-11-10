@@ -41,7 +41,7 @@ namespace Payment_wcf
         [WebInvoke(Method = "PUT",
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
-           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           BodyStyle = WebMessageBodyStyle.Bare,
            UriTemplate = "/CustomerPutDB/"
            )]
         string CustomerPutDB(Customer customer);
