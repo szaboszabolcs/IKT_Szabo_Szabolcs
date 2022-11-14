@@ -55,11 +55,11 @@ namespace Payment_wcf
             DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
             if (tableCustomerManager.Insert(customer) > 0)
             {
-                return "A vásárló adatainak a tárolása sikeresen megtörtént.";
+                return "A vásárló adatainak a tárolása sikertelen!";
             }
             else
             {
-                return "A vásárló adatainak a tárolása sikertelen!";
+                return "A vásárló adatainak a tárolása sikeresen megtörtént.";
             }
         }
 

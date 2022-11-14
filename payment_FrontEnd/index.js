@@ -1,99 +1,85 @@
-document.getElementById('radio1').onclick = function (){
-    var contentText=`
-    Név: <input type="text" id="nev"><br>
-    Életkor:  <input type="number" id="kor"><br>
-    Város: <input type="text" id="varos"><br>
-    <button type="submit" id="button1">Felvesz</button>
-    
-    `;
+var state = false;
 
-    document.getElementById('forms').innerHTML = contentText;
+document.getElementById("state").onclick = function (){
+
+    if(state){
+        state =! state;
+        document.getElementById('idField').innerHTML = "";
+    }
+    else{
+        state = !state;
+        var contentText=`
+        ID: <input type='number' id='idNumber'><br>
+        `;
+        document.getElementById('idField').innerHTML = contentText;
+    }
 }
 
-
-document.getElementById('radio2').onclick = function (){
-    var contentText=`
-    Id: <input type="text" id="id"><br>
-    Név: <input type="text" id="nev"><br>
-    Életkor:  <input type="number" id="kor"><br>
-    Város: <input type="text" id="varos"><br>
-    <button type="submit" id="button1">Módosít</button>
-    
-    `;
-
-    document.getElementById('forms').innerHTML = contentText;
+document.getElementById('button2').onclick =  function(){
+    id = document.getElementById('number2').value;
+    deletCustomer(id);
 }
 
-
-
-document.getElementById('button2').onclick=function (){
-    var delNumber=document.getElementById('number2').value;
-    delCustomer(delNumber)
-}
-// DELETE //
-async function delCustomer(delNumber){
-    var url='http://localhost:3000/Service1.svc/CustomerDeleteDB?Id={Id}/'+delNumber;
-    var delFetch = await fetch(url,{
+async function deletCustomer(id){
+    var url='http://localhost:3000/Service1.svc/CustomerDeleteDB?Id='+id;
+    var delUser = await fetch(url,{
         method: "DELETE",
         headers: {
-            'content-Type': 'application/json'
+            'Content-type': 'application/json'
         }
     });
 
-    if (!delFetch.ok){
-        alert("DELETE végpont hiba!");
+    if(!delUser.ok){
+        alert("Delete hiba!");
         return;
     }
 
-    var httpMessage=await delFetch.json();
-    //alert(httpMessage.stringify);
+    var httpMessage = await delUser.json();
+
+    alert(httpMessage);
+
     getCustomers();
 }
 
-
-document.getElementById('form1').onsubmit=function (event){
+document.getElementById('forms').onsubmit=function (event){
   
     event.preventDefault();
-    var eventResult=true;
 
-    if(typeof(event.target.elements.id)==undefined){
-        var nev=event.target.elements.nev.value;
-        var kor=event.target.elements.kor.value;
-        var varos=event.target.elements.varos.value;
+    var nev=event.target.elements.nev.value;
+    var kor=event.target.elements.kor.value;
+    var varos=event.target.elements.varos.value;
 
+    if(!state){
         var bodyCustomer=JSON.stringify({
-            Name: nev,
-            Age: kor,
-            City: varos
+            Eletkor: kor,
+            Nev: nev,
+            Varos: varos
           });
 
         postCustomer(bodyCustomer);
         
     }
-    else if (eventResult==false){
-        var id=event.target.elements.id.value;
-        var nev=event.target.elements.nev.value;
-        var kor=event.target.elements.kor.value;
-        var varos=event.target.elements.varos.value;
+    else{
+        var id=event.target.elements.idNumber.value;
 
-        updateCustomer();
+        var bodyCustomer=JSON.stringify({
+            ID: id,
+            Nev: nev,
+            Eletkor: kor,
+            Varos: varos
+          });
+
+
+        updateCustomer(bodyCustomer);
         
     }
-    
-
-    if (id==null)
-    {
-        postCustomer(bodyCustomer);
-    }
-
-
-    updateCustomer();
 }
 
 //POST Hozzáadás //
 async function postCustomer(bodyCustomer){
    
     var url='http://localhost:3000/Service1.svc/CustomerPostDB';
+    
     var postUser=await fetch(url,{
         method: "POST",
         body: bodyCustomer,
@@ -116,7 +102,7 @@ async function postCustomer(bodyCustomer){
 
 //UPDATE módosítás //
 async function updateCustomer(){
-    var url='http://localhost:3000/Service1.svc/CustomerPutDB'
+    var url='http://localhost:3000/Service1.svc/CustomerPutDB/'
     var upUser=await fetch(url,{
         method: "PUT",
         headers:{

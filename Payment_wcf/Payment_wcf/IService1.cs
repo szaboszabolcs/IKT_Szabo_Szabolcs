@@ -15,21 +15,21 @@ namespace Payment_wcf
     {
         // Adatok lekérése adatbázisból //
         [OperationContract]
-        [WebInvoke(Method = "GET",
+        [WebInvoke(Method = "*",
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
-           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           BodyStyle = WebMessageBodyStyle.Bare,
            UriTemplate = "/CustomerListaDB/"
            )]
         List<Customer> CustomerListaDB();
 
         // Adatok hozzáadása adatbázisból //
         [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "*",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/CustomerPostDB/"
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "CustomerPostDB"
             )]
         string CustomerPostDB(Customer customer);
 
@@ -38,7 +38,7 @@ namespace Payment_wcf
 
         // Adatok módosítása adatbázisból //
         [OperationContract]
-        [WebInvoke(Method = "PUT",
+        [WebInvoke(Method = "*",
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Bare,
@@ -53,10 +53,10 @@ namespace Payment_wcf
         // Adatok törlése adatbázisból //
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE",
+        [WebInvoke(Method = "*",
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
-           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           BodyStyle = WebMessageBodyStyle.Bare,
            UriTemplate = "/CustomerDeleteDB?Id={Id}"
            )]
         string CustomerDeleteDB(int id);

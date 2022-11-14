@@ -10,18 +10,18 @@
 <body>
     <h1>WCF Felhasználó hozzáadása</h1>
    <div id="uList"></div>
+
    <div id="addCustomer">
-    <hr>
-    <p>Adatok felvétele</p>
-    <hr>
-       <form id="form1">
-           Felvesz: <input type="radio" name="radio1" id="radio1" checked><br>
-           Módosít: <input type="radio" name="radio1" id="radio2"><br>
-           <div id="forms">
-               
-           </div>
-       </form>
-   </div>
+           <form id="forms">
+               <button id="state" type="button">Választ</button><br>
+
+               <span id="idField"></span>
+               Név: <input type="text" id="nev">
+               Város: <input type="text" id="varos"><br>
+               Kor: <input type="number" id="kor"><br>
+               <button type="submit" id="button1">Felvesz</button>
+           </form>
+    </div>
 
    <div id="delCustomer">
     <form id="form2">
