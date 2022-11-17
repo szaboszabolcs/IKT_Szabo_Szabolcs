@@ -47,7 +47,9 @@ namespace Payment_wcf.DatabaseManager
 
         public int Insert(Sor sor)
         {
-            Customer customer = sor as Customer;
+            try
+            {
+                Customer customer = sor as Customer;
             MySqlCommand command = new MySqlCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = @"INSERT INTO customer (Name,Age,City) VALUES (@Name,@Age,@City);";
@@ -80,77 +82,88 @@ namespace Payment_wcf.DatabaseManager
             }
             command.Parameters.Clear();
             return hozzaAdottSorokSzama;
+            }
+            catch 
+            {
+
+                return 0;
+            }
+            
         }
 
         public int Update(Sor sor)
         {
-            Customer customer = sor as Customer;
-            MySqlCommand command = new MySqlCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = @"UPDATE customer SET Name=@Name, Age=@Age, City=@City WHERE Id=@Id";
-            command.Parameters.Add(new MySqlParameter("Id", customer.ID));
-            command.Parameters.Add(new MySqlParameter("Name", customer.Nev));
-            command.Parameters.Add(new MySqlParameter("Age", customer.Eletkor));
-            command.Parameters.Add(new MySqlParameter("City", customer.Varos));
-            int modositottSorokSzama = 0;
-            command.Connection = BaseDatabaseManager.connection;
             try
             {
-                command.Connection.Open();
+                Customer customer = sor as Customer;
+                MySqlCommand command = new MySqlCommand();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = @"UPDATE customer SET Name=@Name, Age=@Age, City=@City WHERE Id=@Id";
+                command.Parameters.Add(new MySqlParameter("Id", customer.ID));
+                command.Parameters.Add(new MySqlParameter("Name", customer.Nev));
+                command.Parameters.Add(new MySqlParameter("Age", customer.Eletkor));
+                command.Parameters.Add(new MySqlParameter("City", customer.Varos));
+                int modositottSorokSzama = 0;
+                command.Connection = BaseDatabaseManager.connection;
                 try
                 {
-                    modositottSorokSzama = command.ExecuteNonQuery();
+                    command.Connection.Open();
+                    try
+                    {
+                        modositottSorokSzama = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Nem tudta módosítani!");
+                        Console.WriteLine(ex.Message);
+                        return -1;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Nem tudta módosítani!");
+                    Console.WriteLine("Nem tudta megnyitni!");
                     Console.WriteLine(ex.Message);
-                    return -1;
+                    return -2;
                 }
+                finally
+                {
+                    command.Connection.Close();
+                }
+                command.Parameters.Clear();
+                return modositottSorokSzama;
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine("Nem tudta megnyitni!");
-                Console.WriteLine(ex.Message);
-                return -2;
+
+                return 0;
             }
-            finally
-            {
-                command.Connection.Close();
-            }
-            command.Parameters.Clear();
-            return modositottSorokSzama;
+           
         }
 
         public int Delete(int id)
         {
-            MySqlCommand command = new MySqlCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = @"DELETE FROM customer WHERE Id=@Id";
-            command.Parameters.Add(new MySqlParameter("Id", id));
-            command.Connection = BaseDatabaseManager.connection;
-            int toroltSorokSzama = 0;
             try
             {
+                MySqlCommand command = new MySqlCommand();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = @"DELETE FROM customer WHERE Id=@Id";
+                command.Parameters.Add(new MySqlParameter("Id", id));
+                command.Connection = BaseDatabaseManager.connection;
+
                 command.Connection.Open();
-                try
-                {
-                    toroltSorokSzama = command.ExecuteNonQuery();
-                }
-                catch
-                {
-                    return -1;
-                }
-            }
-            catch
-            {
-                return -2;
-            }
-            finally
-            {
+                int toroltSorokSzama = command.ExecuteNonQuery(); 
                 command.Connection.Close();
+
+                return toroltSorokSzama;
+                
+             }
+            catch 
+            {
+
+                return 0;
             }
-            return toroltSorokSzama;
+           
+            
         }
     }
 }

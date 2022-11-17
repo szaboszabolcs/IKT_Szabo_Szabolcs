@@ -55,11 +55,12 @@ namespace Payment_wcf
             DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
             if (tableCustomerManager.Insert(customer) > 0)
             {
-                return "A vásárló adatainak a tárolása sikertelen!";
+                return "A vásárló adatainak a tárolása sikeresen megtörtént.";
+              
             }
             else
             {
-                return "A vásárló adatainak a tárolása sikeresen megtörtént.";
+                return "A vásárló adatainak a tárolása sikertelen!";
             }
         }
 
@@ -93,7 +94,7 @@ namespace Payment_wcf
         public string CustomerDeleteDB(int id)
         {
             DatabaseManager.CustomerManager tableCustomerManager = new DatabaseManager.CustomerManager();
-            if (tableCustomerManager.Delete(id) > 0)
+            if (tableCustomerManager.Delete(id) <= 0)
             {
                 return "A vásárló adatainak törlése sikeresen megtörtént.";
             }
