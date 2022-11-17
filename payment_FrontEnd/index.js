@@ -69,7 +69,7 @@ document.getElementById('forms').onsubmit=function (event){
             Varos: varos
           });
 
-
+    
         updateCustomer(bodyCustomer);
         
     }
@@ -101,10 +101,11 @@ async function postCustomer(bodyCustomer){
 } 
 
 //UPDATE módosítás //
-async function updateCustomer(){
+async function updateCustomer(bodyCustomer){
     var url='http://localhost:3000/Service1.svc/CustomerPutDB/'
     var upUser=await fetch(url,{
-        method: "PUT",
+        method: "POST",
+        body:bodyCustomer,
         headers:{
             'Content-type':'application/json'
         }
@@ -116,9 +117,11 @@ async function updateCustomer(){
         return;
     }
 
-    var upResult=await upUser;
+    var upResult=await upUser.json();
 
     alert(upResult);
+
+    getCustomers();
 }
 
 
