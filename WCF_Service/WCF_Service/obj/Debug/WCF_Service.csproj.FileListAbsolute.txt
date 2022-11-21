@@ -1,7 +1,0 @@
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\WCF_Service.dll.config
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\WCF_Service.dll
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\WCF_Service.pdb
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.csproj.AssemblyReference.cache
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.csproj.CoreCompileInputs.cache
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.dll
-C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.pdb
