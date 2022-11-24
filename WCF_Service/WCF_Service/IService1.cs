@@ -16,7 +16,7 @@ namespace WCF_Service
         [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare,
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
             UriTemplate = "/UserLista/"
             )]
         List<User> UserLista();

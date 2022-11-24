@@ -23,7 +23,7 @@ namespace WCF_Service.DatabaseManager
             List<Rekord> rekordok = new List<Rekord>();
             MySqlCommand command = new MySqlCommand();
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "SELECT * FROM customer ORDER BY Name";
+            command.CommandText = "SELECT * FROM login ORDER BY id";
 
             try
             {

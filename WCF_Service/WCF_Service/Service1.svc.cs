@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System;
 using System.ServiceModel.Web;
 using System.Text;
 
+
 namespace WCF_Service
 {
+
     public class Service1 : IService1
     {
-        public static List<User> usersLista = new List<User>();
+        public static List<User> userLista = new List<User>();
         Random random = new Random();
 
-        public static HashSet<int> usersIndex = new HashSet<int>(); // ide kerül az id //
-
+        public static HashSet<int> userIndex = new HashSet<int>();//ID kerül ide
 
         public static int Pozicio(int id)
         {
             int index = 0;
-            int sorSzama = usersLista.Count;
-            while (index < sorSzama)
+            int sorokSzama = userLista.Count;
+            while (index < sorokSzama)
             {
-                if (usersLista[index].ID == id)
+                if (userLista[index].ID == id)
                 {
                     return index;
                 }
@@ -31,21 +29,20 @@ namespace WCF_Service
             return -1;
         }
 
-        // Lekérés adatbázisból //
-
+        // Adatbázisból lekérdezés //
         public List<User> UserLista()
         {
-            List<User> userlist  = new List<User>();
-            DatabaseManager.ISQL tableCustomerManager = new DatabaseManager.Muveletek();
-            List<Rekord> rekordok = tableCustomerManager.Select();
+            List<User> userList = new List<User>();
+            DatabaseManager.ISQL tableUserManager = new DatabaseManager.Muveletek();
+            List<Rekord> rekordok = tableUserManager.Select();
             foreach (Rekord egyRekord in rekordok)
             {
-                if (egyRekord is Rekord)
+                if (egyRekord is User)
                 {
-                    userlist.Add(egyRekord as User);
+                    userList.Add(egyRekord as User);
                 }
             }
-            return userlist;
+            return userList;
         }
     }
 }
