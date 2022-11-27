@@ -30,3 +30,35 @@ C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debu
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.csproj.CopyComplete
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.dll
 C:\Users\Szabó Szabolcs\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.pdb
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\WCF_Service.dll.config
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\WCF_Service.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\WCF_Service.pdb
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\BouncyCastle.Crypto.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\Google.Protobuf.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\K4os.Compression.LZ4.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\K4os.Compression.LZ4.Streams.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\K4os.Hash.xxHash.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\MySql.Data.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\Newtonsoft.Json.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Buffers.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Memory.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Numerics.Vectors.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\ZstdNet.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\BouncyCastle.Crypto.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\Google.Protobuf.pdb
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\Google.Protobuf.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\K4os.Compression.LZ4.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\K4os.Compression.LZ4.Streams.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\K4os.Hash.xxHash.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\MySql.Data.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\Newtonsoft.Json.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Buffers.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Memory.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Numerics.Vectors.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.csproj.AssemblyReference.cache
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.csproj.CoreCompileInputs.cache
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.csproj.CopyComplete
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.dll
+C:\Users\szabo\Git\IKT_Szabo_Szabolcs\WCF_Service\WCF_Service\obj\Debug\WCF_Service.pdb

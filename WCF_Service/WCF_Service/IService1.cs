@@ -11,19 +11,27 @@ namespace WCF_Service
     [ServiceContract]
     public interface IService1
     {
-        // Lekérés adatbázisból //
+        // Get //
+
         [OperationContract]
+
+        User EgyUserGetCS();
+
         [WebInvoke(Method = "GET",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "/UserLista/"
-            )]
-        List<User> UserLista();
-     
+            UriTemplate = "/EgyUserGet/")]
+
+        User EgyUserGet();
+
+
     }
 
-  
+
+
+
+
 
     [DataContract]
     public class Rekord
@@ -61,8 +69,6 @@ namespace WCF_Service
 
         [DataMember(IsRequired =true)]
         public DateTime Log_Time { get; set; }
-
-        
 
     }
 }

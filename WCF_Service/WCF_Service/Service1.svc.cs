@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
@@ -12,7 +15,7 @@ namespace WCF_Service
         public static List<User> userLista = new List<User>();
         Random random = new Random();
 
-        public static HashSet<int> userIndex = new HashSet<int>();//ID kerül ide
+        public static HashSet<int> userIndex = new HashSet<int>(); // ID ide kerül //
 
         public static int Pozicio(int id)
         {
@@ -29,20 +32,24 @@ namespace WCF_Service
             return -1;
         }
 
-        // Adatbázisból lekérdezés //
-        public List<User> UserLista()
+        public User EgyUserGetCS()
         {
-            List<User> userList = new List<User>();
-            DatabaseManager.ISQL tableUserManager = new DatabaseManager.Muveletek();
-            List<Rekord> rekordok = tableUserManager.Select();
-            foreach (Rekord egyRekord in rekordok)
-            {
-                if (egyRekord is User)
-                {
-                    userList.Add(egyRekord as User);
-                }
-            }
-            return userList;
+            User user = new User();
+            user.ID = 1;
+            user.Uname = "minta123";
+            user.Email = "minta@minta.com";
+            user.Password = "-";
+            user.Fullname = "Minta Péter";
+            user.Active = 1;
+            user.Rank = 0;
+            user.Banned = false;
+            return user;
         }
+
+        public User EgyUserGet()
+        {
+            return EgyUserGetCS();
+        }
+
     }
 }

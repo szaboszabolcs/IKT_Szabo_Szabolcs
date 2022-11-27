@@ -105,11 +105,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseManager\DataConnection.cs" />
-    <Compile Include="DatabaseManager\IDML.cs" />
-    <Compile Include="DatabaseManager\IDQL.cs" />
-    <Compile Include="DatabaseManager\ISQL.cs" />
-    <Compile Include="DatabaseManager\Muveletek.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -143,9 +138,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51544</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3001</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:3001</IISAppRootUrl>
+          <IISUrl>http://localhost:5001</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
