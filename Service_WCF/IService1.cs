@@ -12,19 +12,20 @@ namespace Service_WCF
     public interface IService1
     {
 
+        // Login végpont //
+       
+
 
         // Adatok lekérése adatbázisból //
         [OperationContract]
-        [WebInvoke(Method = "GET",
+        [WebInvoke(Method = "*",
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
-           BodyStyle = WebMessageBodyStyle.WrappedRequest,
+           BodyStyle = WebMessageBodyStyle.Bare,
            UriTemplate = "UserListaDB"
            )]
         List<User> UserListaDB();
 
-        
-        
         // Adatok hozzáadása adatbázisból //
         [OperationContract]
         [WebInvoke(Method = "*",
@@ -45,7 +46,7 @@ namespace Service_WCF
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Bare,
-           UriTemplate = "UserPutDB"
+           UriTemplate = "/UserPutDB/"
            )]
         string UserPutDB(User user);
 
@@ -61,7 +62,7 @@ namespace Service_WCF
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Bare,
-           UriTemplate = "UserDeleteDB?Id={Id}"
+           UriTemplate = "/UserDeleteDB?Id={Id}"
            )]
         string UserDeleteDB(int id);
 

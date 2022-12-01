@@ -33,6 +33,8 @@ namespace Service_WCF
 
 
         // Adatbázisból lekérdezés //
+
+       
         public List<User> UserListaDB()
         {
             List<User> userList = new List<User>();
@@ -211,7 +213,7 @@ namespace Service_WCF
 
         public string EgyUserDeleteCS(int ID)
         {
-            if (ID != null)
+            if (ID != 0)
             {
                 int id = (int)ID;
                 if (userIndex.Contains(id))

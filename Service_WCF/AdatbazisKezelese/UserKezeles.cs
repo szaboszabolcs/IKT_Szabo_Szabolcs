@@ -24,17 +24,28 @@ namespace Service_WCF.AdatbazisKezelese
                 while (reader.Read())
                 {
                     User egyUser = new User();
-                    egyUser.ID = int.Parse(reader["id"].ToString());
-                    egyUser.Uname = reader["uname"].ToString();
-                    egyUser.Email = reader["email"].ToString();
-                    egyUser.Password = reader["pwd"].ToString();
-                    egyUser.Fullname = reader["fullname"].ToString();
-                    egyUser.Active = byte.Parse(reader["active"].ToString());
-                    egyUser.Rank = int.Parse(reader["rank"].ToString());
-                    egyUser.Banned = bool.Parse(reader["ban"].ToString());
-                    egyUser.Reg_Time = DateTime.Parse(reader["reg_time"].ToString());
-                    egyUser.Log_Time = DateTime.Parse(reader["log_time"].ToString());
+                    egyUser.ID = reader.GetInt32("ID");
+                    egyUser.Uname =reader.GetString("uname");
+                    egyUser.Email = reader.GetString("email");
+                    egyUser.Password = reader.GetString("pwd");
+                    egyUser.Fullname = reader.GetString("fullname");
+                    egyUser.Active = reader.GetByte("active");
+                    egyUser.Rank = reader.GetInt32("rank");
+                    egyUser.Banned = reader.GetBoolean("ban");
+                    egyUser.Reg_Time = reader.GetDateTime("reg_time");
+                    egyUser.Log_Time = reader.GetDateTime("log_time");
                     rekordok.Add(egyUser);
+                    /*egyUser.ID = 0;
+                    egyUser.Uname = "sdfs";
+                    egyUser.Password = "sdfs";
+                    egyUser.Email = "dlvmds";
+                    egyUser.Fullname = "dlvmds";
+                    egyUser.Rank = 0;
+                    egyUser.Active = 0;
+                    egyUser.Banned = true;
+                    egyUser.Reg_Time = DateTime.Now;
+                    egyUser.Log_Time = DateTime.Now;
+                    rekordok.Add(egyUser);*/
                 }
 
             }
@@ -64,7 +75,7 @@ namespace Service_WCF.AdatbazisKezelese
                 command.Parameters.Add(new MySqlParameter("@pwd", MySqlDbType.VarChar)).Value = user.Password;
                 command.Parameters.Add(new MySqlParameter("@fullname", MySqlDbType.VarChar)).Value = user.Fullname;
                 command.Parameters.Add(new MySqlParameter("@active", MySqlDbType.Byte)).Value = user.Active;
-                command.Parameters.Add(new MySqlParameter("@rank", MySqlDbType.Int64)).Value = user.Active;
+                command.Parameters.Add(new MySqlParameter("@rank", MySqlDbType.Int32)).Value = user.Active;
                 command.Parameters.Add(new MySqlParameter("@ban", MySqlDbType.Bit)).Value = user.Banned;
                 command.Parameters.Add(new MySqlParameter("@reg_time", MySqlDbType.DateTime)).Value = user.Reg_Time;
                 command.Parameters.Add(new MySqlParameter("@log_time", MySqlDbType.DateTime)).Value = user.Log_Time;
