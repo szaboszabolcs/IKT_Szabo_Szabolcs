@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
+
 namespace Service_WCF
 {
     [ServiceContract]
@@ -13,10 +14,9 @@ namespace Service_WCF
     {
 
         // Login végpont //
-       
 
 
-        // Adatok lekérése adatbázisból //
+        // Adatok lekérése adatbázisból működik //
         [OperationContract]
         [WebInvoke(Method = "*",
            RequestFormat = WebMessageFormat.Json,
@@ -46,7 +46,7 @@ namespace Service_WCF
            RequestFormat = WebMessageFormat.Json,
            ResponseFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Bare,
-           UriTemplate = "/UserPutDB/"
+           UriTemplate = "UserPutDB"
            )]
         string UserPutDB(User user);
 
@@ -55,7 +55,7 @@ namespace Service_WCF
         string UserPutDBCS(User user);
 
 
-        // Adatok törlése adatbázisból //
+        // Adatok törlése adatbázisból működik //
 
         [OperationContract]
         [WebInvoke(Method = "*",
@@ -70,21 +70,6 @@ namespace Service_WCF
 
         string UserDeleteDBCS(int id);
 
-
-
-
-
-
-        //Get lekérés //
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "EgyUserGet"
-            )]
-
-        User EgyUserGet();
 
 
         // POST lekérés //
@@ -177,6 +162,7 @@ namespace Service_WCF
 }
 
     [DataContract]
+
 public class Rekord
 {
     [DataMember]

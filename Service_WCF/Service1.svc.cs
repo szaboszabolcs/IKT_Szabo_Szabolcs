@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Service_WCF
 {
@@ -34,7 +38,7 @@ namespace Service_WCF
 
         // Adatbázisból lekérdezés //
 
-       
+
         public List<User> UserListaDB()
         {
             List<User> userList = new List<User>();
@@ -49,6 +53,9 @@ namespace Service_WCF
             }
             return userList;
         }
+
+
+      
 
 
         // Hozzáadás Adatbázisban //
@@ -100,11 +107,12 @@ namespace Service_WCF
             AdatbazisKezelese.UserKezeles tableUserKezeles = new AdatbazisKezelese.UserKezeles();
             if (tableUserKezeles.Delete(id) <= 0)
             {
-                return "A felhasználó adatainak törlése megtörtént.";
+                
+                return "A felhasználó adatainak törlése sikertelen!";
             }
             else
             {
-                return "A felhasználó adatainak törlése sikertelen!";
+                return "A felhasználó adatainak törlése megtörtént.";
             }
         }
 
@@ -114,26 +122,7 @@ namespace Service_WCF
         }
 
 
-        public User EgyUserGetCS()
-        {
-            User user = new User();
-            user.ID = 1;
-            user.Uname = "minta123";
-            user.Email = "minta@minta.com";
-            user.Password = "-";
-            user.Fullname = "Minta Péter";
-            user.Active = 1;
-            user.Rank = 0;
-            user.Banned = false;
-            user.Reg_Time = DateTime.Now;
-            user.Log_Time = DateTime.Now;
-            return user;
-        }
-
-        public User EgyUserGet()
-        {
-            return EgyUserGetCS();
-        }
+       
 
         public User EgyUserPostCS()
         {
