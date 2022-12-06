@@ -8,7 +8,7 @@ using System.ServiceModel.Channels;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Web.UI.WebControls;
 
 namespace Service_WCF.AdatbazisKezelese
 {
@@ -68,139 +68,142 @@ namespace Service_WCF.AdatbazisKezelese
             return rekordok;
         }
 
-
         public int Insert(Rekord rekord)
         {
-            try
-            {
-                User user = rekord as User;
-            MySqlCommand command = new MySqlCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = @"INSERT INTO `users`(Uname,Email,Password,Fullname,Active,Rank,Banned,Reg_Time,Log_Time) VALUES(@uname,@email,@pwd,@fullname,@active,@rank,@ban,@reg_time,@log_time);";
-            command.Parameters.AddWithValue("@uname", user.Uname);
-            command.Parameters.AddWithValue("@email", user.Email);
-            command.Parameters.AddWithValue("@pwd", user.Password);
-            command.Parameters.AddWithValue("@fullname", user.Fullname);
-            command.Parameters.AddWithValue("@active", user.Active);
-            command.Parameters.AddWithValue("@rank", user.Rank);
-            command.Parameters.AddWithValue("@ban", user.Banned);
-            command.Parameters.AddWithValue("reg_time", user.Reg_Time);
-            command.Parameters.AddWithValue("log_time", user.Log_Time);
-            int hozzaAdottSorokSzama = 0;
-            command.Connection = Kapcsolat.connection;
-                try
-                {
-                    command.Connection.Open();
-                    try
-                    {
-                        hozzaAdottSorokSzama = command.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Nem tudta hozzáadni!");
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Nem tudta megnyitni!");
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    command.Connection.Close();
-                }
-                command.Parameters.Clear();
-                return hozzaAdottSorokSzama;
-                }
-                catch
-                {
-                    return 0;
-                }
-
-            }
-            public int Update(Rekord rekord)
             {
                 try
                 {
                     User user = rekord as User;
-                    MySqlCommand command = new MySqlCommand();
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = @"UPDATE users SET ID=@id , Uname=@uname, Email=@email, Password=@pwd, Fullname=@fullname, Active=@active, Rank=@rank, Banned=@ban, Reg_Time=@reg_time, Log_Time=@log_time WHERE ID=@id";
-                    command.Parameters.AddWithValue("@id", user.ID);
-                    command.Parameters.AddWithValue("@uname", user.Uname);
-                    command.Parameters.AddWithValue("@email", user.Email);
-                    command.Parameters.AddWithValue("@pwd", user.Password);
-                    command.Parameters.AddWithValue("@fullname", user.Fullname);
-                    command.Parameters.AddWithValue("@active", user.Active);
-                    command.Parameters.AddWithValue("@rank", user.Rank);
-                    command.Parameters.AddWithValue("@ban", user.Banned);
-                    command.Parameters.AddWithValue("@reg_time", user.Reg_Time);
-                    command.Parameters.AddWithValue("@log_time", user.Log_Time);
-                    int modositottSorokSzama = 0;
-                    command.Connection = Kapcsolat.connection;
+                    string qry = "INSERT INTO `users`(`uname`, `email`, `pwd`, `fullname`, `active`, `rank`, `ban`, `reg_time`, `log_time`) " +
+                        "VALUES (@uname, @email, @pwd, @fullname, @active, @rank, @ban, @reg_time, @log_time);";
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = Kapcsolat.connection;
+                    cmd.Parameters.AddWithValue("@uname", user.Uname);
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@pwd", user.Password);
+                    cmd.Parameters.AddWithValue("@fullname", user.Fullname);
+                    cmd.Parameters.AddWithValue("@active", user.Active);
+                    cmd.Parameters.AddWithValue("@rank", user.Rank);
+                    cmd.Parameters.AddWithValue("@ban", user.Banned);
+                    cmd.Parameters.AddWithValue("@reg_time", user.Reg_Time);
+                    cmd.Parameters.AddWithValue("@log_time", user.Log_Time);
+                    cmd.CommandText = qry;
+                    int hozzaAdottSorokSzama = 0;
                     try
                     {
-                        command.Connection.Open();
+                        cmd.Connection.Open();
                         try
                         {
-                            modositottSorokSzama = command.ExecuteNonQuery();
+                            hozzaAdottSorokSzama = cmd.ExecuteNonQuery();
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("Nem tudta módosítani!");
+                            Console.WriteLine("Nem tudta hozzáadni!");
                             Console.WriteLine(ex.Message);
-                            return -1;
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine("Nem tudta megnyitni!");
                         Console.WriteLine(ex.Message);
-                        return -2;
                     }
                     finally
                     {
-                        command.Connection.Close();
+                        cmd.Connection.Close();
                     }
-                    command.Parameters.Clear();
-                    return modositottSorokSzama;
+                    cmd.Parameters.Clear();
+                    return hozzaAdottSorokSzama;
                 }
                 catch
                 {
-
-
                     return 0;
                 }
-
-            }
-            public int Delete(int id)
-            {
-                try
-                {
-                    MySqlCommand command = new MySqlCommand();
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = @"DELETE FROM users WHERE id=@id";
-                    command.Parameters.Add(new MySqlParameter("id", id));
-                    command.Connection = Kapcsolat.connection;
-
-                    command.Connection.Open();
-                    int toroltSorokSzama = command.ExecuteNonQuery();
-                    command.Connection.Close();
-
-                    return toroltSorokSzama;
-                }
-                catch
-                {
-
-
-
-                    return 0;
-                }
-
-
-
-
             }
         }
+
+
+        public int Update(Rekord rekord)
+        {
+            try
+            {
+                User user = rekord as User;
+                string qry = "UPDATE `users` SET `uname`= @uname,`email`= @email,`pwd`= @pwd,`fullname`= @fullname,`active`= @active,`rank`= @rank,`ban`= @ban, `reg_time`=@reg_time, `log_time`=@log_time WHERE ID = @id; ";
+                MySqlCommand command = new MySqlCommand();
+                command.Connection = Kapcsolat.connection;
+                command.Parameters.AddWithValue("@id", user.ID);
+                command.Parameters.AddWithValue("@uname", user.Uname);
+                command.Parameters.AddWithValue("@email", user.Email);
+                command.Parameters.AddWithValue("@pwd", user.Password);
+                command.Parameters.AddWithValue("@fullname", user.Fullname);
+                command.Parameters.AddWithValue("@active", user.Active);
+                command.Parameters.AddWithValue("@rank", user.Rank);
+                command.Parameters.AddWithValue("@ban", user.Banned);
+                command.Parameters.AddWithValue("@reg_time", user.Reg_Time);
+                command.Parameters.AddWithValue("@log_time", user.Log_Time);
+                command.CommandText = qry;
+                int modositottSorokSzama = 0;
+                try
+                {
+                    command.Connection.Open();
+                    try
+                    {
+                        modositottSorokSzama = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Nem tudta módosítani!");
+                        Console.WriteLine(ex.Message);
+                        return -1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Nem tudta megnyitni!");
+                    Console.WriteLine(ex.Message);
+                    return -2;
+                }
+                finally
+                {
+                    command.Connection.Close();
+                }
+                command.Parameters.Clear();
+                return modositottSorokSzama;
+            }
+            catch
+            {
+
+
+                return 0;
+            }
+
+        }
+        public int Delete(int id)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = @"DELETE FROM users WHERE id=@id";
+                command.Parameters.Add(new MySqlParameter("id", id));
+                command.Connection = Kapcsolat.connection;
+
+                command.Connection.Open();
+                int toroltSorokSzama = command.ExecuteNonQuery();
+                command.Connection.Close();
+
+                return toroltSorokSzama;
+            }
+            catch
+            {
+
+
+
+                return 0;
+            }
+
+
+
+
+        }
     }
+}

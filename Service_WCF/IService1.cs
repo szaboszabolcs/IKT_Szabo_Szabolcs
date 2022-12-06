@@ -13,9 +13,6 @@ namespace Service_WCF
     public interface IService1
     {
 
-        // Login végpont //
-
-
         // Adatok lekérése adatbázisból működik //
         [OperationContract]
         [WebInvoke(Method = "*",
@@ -26,7 +23,7 @@ namespace Service_WCF
            )]
         List<User> UserListaDB();
 
-        // Adatok hozzáadása adatbázisból //
+        // Adatok hozzáadása adatbázisból működik //
         [OperationContract]
         [WebInvoke(Method = "*",
             RequestFormat = WebMessageFormat.Json,
@@ -40,7 +37,7 @@ namespace Service_WCF
         string UserPostDBCS(User user);
 
 
-        // Adatok módosítása adatbázisból //
+        // Adatok módosítása adatbázisból működik //
         [OperationContract]
         [WebInvoke(Method = "*",
            RequestFormat = WebMessageFormat.Json,

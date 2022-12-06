@@ -9,10 +9,11 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using Service_WCF.AdatbazisKezelese;
 
 namespace Service_WCF
 {
-     
+
     public class Service1 : IService1
     {
         public static List<User> userLista = new List<User>();
@@ -36,6 +37,7 @@ namespace Service_WCF
         }
 
 
+
         // Adatbázisból lekérdezés //
 
 
@@ -55,7 +57,7 @@ namespace Service_WCF
         }
 
 
-      
+
 
 
         // Hozzáadás Adatbázisban //
@@ -107,7 +109,7 @@ namespace Service_WCF
             AdatbazisKezelese.UserKezeles tableUserKezeles = new AdatbazisKezelese.UserKezeles();
             if (tableUserKezeles.Delete(id) <= 0)
             {
-                
+
                 return "A felhasználó adatainak törlése sikertelen!";
             }
             else
@@ -122,7 +124,7 @@ namespace Service_WCF
         }
 
 
-       
+
 
         public User EgyUserPostCS()
         {
