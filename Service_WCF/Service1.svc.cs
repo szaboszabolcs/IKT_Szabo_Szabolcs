@@ -56,7 +56,46 @@ namespace Service_WCF
             return userList;
         }
 
+        public User getUsers(string uname, string pwd)
+        {
 
+            try
+            {
+                string qry = "SELECT * FROM `users` WHERE uname=@uname AND pwd=@pwd";
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = Kapcsolat.connection;
+                cmd.Parameters.AddWithValue("@uname", uname);
+                cmd.Parameters.AddWithValue("@pwd", pwd);
+                cmd.CommandText = qry;
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                dr.Read();
+
+                User Users = new User();
+
+                Users.ID = dr.GetInt32(0);
+                Users.Uname = dr.GetString(1);
+                Users.Email = dr.GetString(2);
+                Users.Password = dr.GetString(3);
+                Users.Fullname = dr.GetString(4);
+                Users.Active = dr.GetByte(5);
+                Users.Rank = dr.GetInt32(6);
+                Users.Banned = dr.GetBoolean(7);
+                Users.Reg_Time = dr.GetDateTime("reg_time");
+                Users.Log_Time = dr.GetDateTime("log_time");
+
+
+                dr.Close();
+                return Users;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
 
 
 

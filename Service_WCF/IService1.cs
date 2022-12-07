@@ -13,6 +13,16 @@ namespace Service_WCF
     public interface IService1
     {
 
+        // Login végpont //
+        [OperationContract]
+        [WebInvoke(Method = "*",
+           RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Bare,
+           UriTemplate = "getUsers/{uname}/{pwd}")
+           ]
+        User getUsers(string uname, string pwd);
+
         // Adatok lekérése adatbázisból működik //
         [OperationContract]
         [WebInvoke(Method = "*",
