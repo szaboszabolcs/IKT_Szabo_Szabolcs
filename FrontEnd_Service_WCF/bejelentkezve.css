@@ -1,0 +1,17 @@
+table, tr, td{
+    border: 1px solid;
+    text-align: center;
+    border-style: double;
+    margin: 5px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+tr { border: .4pt }
+table { border: thick solid }
+thead { border: 14pt double(1,12,1) }
+thead { background: cyan }
+tr.odd { background: yellow }
+tr.even { background: cyan }

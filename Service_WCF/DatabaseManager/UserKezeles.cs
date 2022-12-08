@@ -8,6 +8,7 @@ using System.ServiceModel.Channels;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web.UI.WebControls;
 
 namespace Service_WCF.AdatbazisKezelese
 {
@@ -30,7 +31,7 @@ namespace Service_WCF.AdatbazisKezelese
                 {
                     User egyUser = new User();
                     egyUser.ID = reader.GetInt32("ID");
-                    egyUser.Uname =reader.GetString("uname");
+                    egyUser.Uname = reader.GetString("uname");
                     egyUser.Email = reader.GetString("email");
                     egyUser.Password = reader.GetString("pwd");
                     egyUser.Fullname = reader.GetString("fullname");
@@ -67,135 +68,69 @@ namespace Service_WCF.AdatbazisKezelese
             return rekordok;
         }
 
-        // Login végponthoz //
-
-        /*public User getUsers(string uname, string pwd)
-        {
-
-            try
-            {
-                string qry = "SELECT * FROM `users` WHERE uname=@uname AND pwd=@pwd";
-
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = Kapcsolat.connection;
-                cmd.Parameters.AddWithValue("@uname", uname);
-                cmd.Parameters.AddWithValue("@pwd", pwd);
-                cmd.CommandText = qry;
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                dr.Read();
-
-                User users = new User();
-
-                users.ID = dr.GetInt32(0);
-                users.Uname = dr.GetString(1);
-                users.Email = dr.GetString(2);
-                users.Password = dr.GetString(3);
-                users.Fullname = dr.GetString(4);
-                users.Active = dr.GetByte(5);
-                users.Rank = dr.GetInt32(6);
-                users.Banned = dr.GetBoolean(7);
-
-
-                dr.Close();
-                return users;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }*/
-
-
         public int Insert(Rekord rekord)
         {
-           
-
-            try
             {
-                User user = rekord as User;
-                MySqlConnection connection = Kapcsolat.connection;
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO users (Uname,Email,Password,Fullname,Active,Rank,Banned,Reg_Time,Log_Time) VALUES (@uname,@email,@pwd,@fullname,@active,@rank,@ban,@reg_time,@log_time)");
-                cmd.Parameters.AddWithValue("@uname", user.Uname);
-                cmd.Parameters.AddWithValue("@email", user.Email);
-                cmd.Parameters.AddWithValue("@pwd", user.Password);
-                cmd.Parameters.AddWithValue("@fullname", user.Fullname);
-                cmd.Parameters.AddWithValue("@active", user.Active);
-                cmd.Parameters.AddWithValue("@rank", user.Rank);
-                cmd.Parameters.AddWithValue("@ban", user.Banned);
-                cmd.Parameters.AddWithValue("reg_time", user.Reg_Time);
-                cmd.Parameters.AddWithValue("log_time", user.Log_Time);
-                int hozzaAdottSorokSzama = 0;
-                cmd.Connection = Kapcsolat.connection;
                 try
                 {
-                    cmd.Connection.Open();
+                    User user = rekord as User;
+                    string qry = "INSERT INTO `users`(`uname`, `email`, `pwd`, `fullname`, `active`, `rank`, `ban`, `reg_time`, `log_time`) " +
+                        "VALUES (@uname, @email, @pwd, @fullname, @active, @rank, @ban, @reg_time, @log_time);";
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = Kapcsolat.connection;
+                    cmd.Parameters.AddWithValue("@uname", user.Uname);
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@pwd", user.Password);
+                    cmd.Parameters.AddWithValue("@fullname", user.Fullname);
+                    cmd.Parameters.AddWithValue("@active", user.Active);
+                    cmd.Parameters.AddWithValue("@rank", user.Rank);
+                    cmd.Parameters.AddWithValue("@ban", user.Banned);
+                    cmd.Parameters.AddWithValue("@reg_time", user.Reg_Time);
+                    cmd.Parameters.AddWithValue("@log_time", user.Log_Time);
+                    cmd.CommandText = qry;
+                    int hozzaAdottSorokSzama = 0;
                     try
                     {
-                        hozzaAdottSorokSzama = cmd.ExecuteNonQuery();
+                        cmd.Connection.Open();
+                        try
+                        {
+                            hozzaAdottSorokSzama = cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Nem tudta hozzáadni!");
+                            Console.WriteLine(ex.Message);
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine("Nem tudta megnyitni!");
                         Console.WriteLine(ex.Message);
                     }
+                    finally
+                    {
+                        cmd.Connection.Close();
+                    }
+                    cmd.Parameters.Clear();
+                    return hozzaAdottSorokSzama;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Console.WriteLine("Nem tudta megnyitni!");
-                    Console.WriteLine(ex.Message);
+                    return 0;
                 }
-                finally
-                {
-                    cmd.Connection.Close();
-                }
-                cmd.Parameters.Clear();
-                return hozzaAdottSorokSzama;
             }
-            catch
-            {
-
-                return 0;
-            }
-            
-
-                /*User user = rekord as User;
-                MySqlCommand command = new MySqlCommand();
-                command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = @"INSERT INTO users (Uname,Email,Password,Fullname,Active,Rank,Banned,Reg_Time,Log_Time) VALUES (@uname,@email,@pwd,@fullname,@active,@rank,@ban,@reg_time,@log_time);";
-                command.Parameters.Add(new MySqlParameter("@uname", MySqlDbType.VarChar)).Value = user.Uname;
-                command.Parameters.Add(new MySqlParameter("@email", MySqlDbType.VarChar)).Value = user.Email;
-                command.Parameters.Add(new MySqlParameter("@pwd", MySqlDbType.VarChar)).Value = user.Password;
-                command.Parameters.Add(new MySqlParameter("@fullname", MySqlDbType.VarChar)).Value = user.Fullname;
-                command.Parameters.Add(new MySqlParameter("@active", MySqlDbType.Byte)).Value = user.Active;
-                command.Parameters.Add(new MySqlParameter("@rank", MySqlDbType.Int32)).Value = user.Active;
-                command.Parameters.Add(new MySqlParameter("@ban", MySqlDbType.Bit)).Value = user.Banned;
-                command.Parameters.Add(new MySqlParameter("@reg_time", MySqlDbType.DateTime)).Value = user.Reg_Time;
-                command.Parameters.Add(new MySqlParameter("@log_time", MySqlDbType.DateTime)).Value = user.Log_Time;
-                
-                command.Parameters.AddWithValue("@uname", user.Uname);
-                command.Parameters.AddWithValue("@email", user.Email);
-                command.Parameters.AddWithValue("@pwd", user.Password);
-                command.Parameters.AddWithValue("@fullname", user.Fullname);
-                command.Parameters.AddWithValue("@active", user.Active);
-                command.Parameters.AddWithValue("@rank", user.Rank);
-                command.Parameters.AddWithValue("@ban", user.Banned);
-                command.Parameters.AddWithValue("@reg_time", user.Reg_Time);
-                command.Parameters.AddWithValue("log_time", user.Log_Time);*/
-               
         }
-         
+
 
         public int Update(Rekord rekord)
         {
             try
             {
                 User user = rekord as User;
+                string qry = "UPDATE `users` SET `uname`= @uname,`email`= @email,`pwd`= @pwd,`fullname`= @fullname,`active`= @active,`rank`= @rank,`ban`= @ban, `reg_time`=@reg_time, `log_time`=@log_time WHERE ID = @id; ";
                 MySqlCommand command = new MySqlCommand();
-                command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = @"UPDATE users SET Uname=@uname, Email=@email, Password=@pwd, Fullname=@fullname, Active=@active, Rank=@rank, Banned=@ban, Reg_Time=@reg_time, Log_Time=@log_time WHERE id=@id";
+                command.Connection = Kapcsolat.connection;
+                command.Parameters.AddWithValue("@id", user.ID);
                 command.Parameters.AddWithValue("@uname", user.Uname);
                 command.Parameters.AddWithValue("@email", user.Email);
                 command.Parameters.AddWithValue("@pwd", user.Password);
@@ -205,8 +140,8 @@ namespace Service_WCF.AdatbazisKezelese
                 command.Parameters.AddWithValue("@ban", user.Banned);
                 command.Parameters.AddWithValue("@reg_time", user.Reg_Time);
                 command.Parameters.AddWithValue("@log_time", user.Log_Time);
+                command.CommandText = qry;
                 int modositottSorokSzama = 0;
-                command.Connection = AdatbazisKezelese.connection;
                 try
                 {
                     command.Connection.Open();
@@ -237,11 +172,11 @@ namespace Service_WCF.AdatbazisKezelese
             catch
             {
 
+
                 return 0;
             }
 
         }
-  
         public int Delete(int id)
         {
             try
@@ -260,8 +195,15 @@ namespace Service_WCF.AdatbazisKezelese
             }
             catch
             {
+
+
+
                 return 0;
             }
+
+
+
+
         }
     }
 }

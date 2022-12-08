@@ -9,10 +9,11 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using Service_WCF.AdatbazisKezelese;
 
 namespace Service_WCF
 {
-     
+
     public class Service1 : IService1
     {
         public static List<User> userLista = new List<User>();
@@ -35,7 +36,6 @@ namespace Service_WCF
             return -1;
         }
 
-
         // Adatbázisból lekérdezés //
 
 
@@ -54,9 +54,44 @@ namespace Service_WCF
             return userList;
         }
 
+        public User getUsers(string uname, string pwd)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            string qry = "SELECT * FROM `users` WHERE uname=@uname AND pwd=@pwd";
 
-      
+            MySqlConnection connection = Kapcsolat.connection;
+            connection.Open();
+            cmd.Connection = connection;
+            cmd.Parameters.AddWithValue("@uname", uname);
+            cmd.Parameters.AddWithValue("@pwd", pwd);
+            cmd.CommandText = qry;
 
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (!dr.HasRows)
+            {
+                return null;
+            }
+            dr.Read();
+
+            User Users = new User();
+
+            Users.ID = dr.GetInt32(0);
+            Users.Uname = dr.GetString(1);
+            Users.Email = dr.GetString(2);
+            Users.Password = dr.GetString(3);
+            Users.Fullname = dr.GetString(4);
+            Users.Active = dr.GetByte(5);
+            Users.Rank = dr.GetInt32(6);
+            Users.Banned = dr.GetBoolean(7);
+            Users.Reg_Time = dr.GetDateTime("reg_time");
+            Users.Log_Time = dr.GetDateTime("log_time");
+
+            
+            dr.Close();
+            connection.Close();
+            return Users;
+        }
 
         // Hozzáadás Adatbázisban //
         public string UserPostDB(User user)
@@ -107,7 +142,7 @@ namespace Service_WCF
             AdatbazisKezelese.UserKezeles tableUserKezeles = new AdatbazisKezelese.UserKezeles();
             if (tableUserKezeles.Delete(id) <= 0)
             {
-                
+
                 return "A felhasználó adatainak törlése sikertelen!";
             }
             else
@@ -122,7 +157,7 @@ namespace Service_WCF
         }
 
 
-       
+
 
         public User EgyUserPostCS()
         {

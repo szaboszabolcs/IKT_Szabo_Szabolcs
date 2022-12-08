@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Login űrlap</title>
+</head>
+<body>
+
+    
+
+
+    <div class="hero">
+<div class="form-box">
+    <div class="button-box">
+        <div id="btn"></div>
+        <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+        <button type="button" class="toggle-btn" onclick="register()">Register</button>
+    </div>
+    <div class="social-icons">
+        <img src="fb.png">
+        <img src="tw.png">
+        <img src="gp.png">
+    </div>
+        
+    </body>
+    </html><form id="login" class="input-group">
+        <input type="text" class="input-field" id="Username" placeholder="Username" required>
+        <input type="text" class="input-field" id="Password" placeholder="Password" required><br>
+        <button type="submit" onclick=handleClick() class="submit-btn">Login</button>
+    </form>
+    <form id="register" class="input-group">
+        <input type="text" class="input-field" id="Username" placeholder="Username" required>
+        <input type="email" class="input-field" id="Email" placeholder="Email" required>
+        <input type="text" class="input-field" id="Password" placeholder="Password" required>
+        <input type="text" class="input-field" id="FullName" placeholder="Fullname" required>
+        <input type="checkbox" class="chech-box"><span>I agree to the terms & conditions</span>
+        <button type="submit" class="submit-btn" onclick=handleRegister()>Register</button>
+    </form>
+</div>
+
+
+    </div>
+
+    <script>
+    
+    function handleClick(){
+        username = document.getElementById("Username").value;
+        password = document.getElementById("Password").value;
+        console.log(username);
+        console.log(password);
+        axios.get("http://localhost:5001/Service1.svc/getUsers/"+username+"/"+password).then(function(res){
+          console.log(res);
+          if(res.data === ""){
+            alert("Sikertelen bejelentkezés!");
+          }
+          else{
+            alert("Sikeres bejelentkezés!");
+            registers();
+          }
+        })
+    }
+
+    function handleRegister(){
+        const data = 
+        {
+          Active: 0,
+          Ban: 0,
+          Email: document.getElementById("Email").value,
+          FullName: document.getElementById("FullName").value,
+          Id: 0,
+          Pwd: document.getElementById("Password").value,
+          Rank: 0,
+          Uname: document.getElementById("Username").value
+        }
+        if(!data.Email.length == 20)
+        {
+          alert("Az emailnak hosszabbnak kell lennie!");
+          return;
+        }
+        axios.post("http://localhost:5001/Service1.svc/UserPostDB",data).then(function(res){
+          console.log(res);
+          
+            alert(res.data.postCustomerResult);
+        })
+      }
+
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    var z = document.getElementById("btn");
+    
+    function register() {
+        x.style.left = "-400px";
+        y.style.left = "50px";
+        z.style.left = "110px";
+    }
+
+    function login() {
+        x.style.left = "50px";
+        y.style.left = "450px";
+        z.style.left = "0";
+    }
+
+    function registers()
+    {
+        window.location = "bejelentkezve.html";
+    }
+
+    </script>
+
+
+
+    
+    
+</body>
+</html>   

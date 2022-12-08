@@ -102,11 +102,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdatbazisKezelese\IDML.cs" />
-    <Compile Include="AdatbazisKezelese\IDQL.cs" />
-    <Compile Include="AdatbazisKezelese\ISQL.cs" />
-    <Compile Include="AdatbazisKezelese\Kapcsolat.cs" />
-    <Compile Include="AdatbazisKezelese\UserKezeles.cs" />
+    <Compile Include="DatabaseManager\IDML.cs" />
+    <Compile Include="DatabaseManager\IDQL.cs" />
+    <Compile Include="DatabaseManager\ISQL.cs" />
+    <Compile Include="DatabaseManager\Kapcsolat.cs" />
+    <Compile Include="DatabaseManager\UserKezeles.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>

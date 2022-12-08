@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bejelentkezve.css">
+    <title>Felhasználók kezelése</title>
+</head>
+<body>
+
+    <h1>WCF Felhasználó hozzáadása</h1>
+    <hr>
+    <br>
+    <table style="border: 1px solid" id="uList"></table><br>
+ 
+    <div id="addCustomer">
+            <form id="forms">
+                <button id="state" type="button">Választ</button><br>
+ 
+                <span id="idField"></span>
+                Uname: <input type="text" id="nev">
+                Email: <input type="text" id="varos"><br>
+                Password: <input type="password" id="password"><br>
+                Fullname: <input type="text" id="fullname"><br>
+                Active: <input type="number" id="active"><br>
+                Rank: <input type="number" id="rank"><br>
+                Ban: <input type="text" id="ban"><br>
+                Reg_Time: <input type="datetime-local" id ="reg_time"><br>
+                Log_Time: <input type="datetime-local" id ="log_time"><br><br>
+                <button type="submit" id="button1">Felvesz</button>
+            </form>
+     </div>
+ 
+    <div id="delCustomer">
+     <form id="form2">
+         <input type="number" id="number2"><br>
+         <button type="button" id="button2">Töröl</button>
+     </form>
+ </div>
+ 
+ 
+     <script src="./index.js"></script>
+    
+</body>
+</html>
+
+
