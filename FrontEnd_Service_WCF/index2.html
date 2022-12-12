@@ -9,7 +9,7 @@
     <title>Login űrlap</title>
 </head>
 <body>
-
+    <script src="./login.js"></script>
     
 
 
@@ -30,7 +30,7 @@
     </html><form id="login" class="input-group">
         <input type="text" class="input-field" id="Username" placeholder="Username" required>
         <input type="text" class="input-field" id="Password" placeholder="Password" required><br>
-        <button type="submit" onclick=handleClick() class="submit-btn">Login</button>
+        <button type="submit" id="loginbtn" onclick=handleClick() class="submit-btn">Login</button>
     </form>
     <form id="register" class="input-group">
         <input type="text" class="input-field" id="Username" placeholder="Username" required>
@@ -46,47 +46,6 @@
     </div>
 
     <script>
-    
-    function handleClick(){
-        username = document.getElementById("Username").value;
-        password = document.getElementById("Password").value;
-        console.log(username);
-        console.log(password);
-        axios.get("http://localhost:5001/Service1.svc/getUsers/"+username+"/"+password).then(function(res){
-          console.log(res);
-          if(res.data === ""){
-            alert("Sikertelen bejelentkezés!");
-          }
-          else{
-            alert("Sikeres bejelentkezés!");
-            registers();
-          }
-        })
-    }
-
-    function handleRegister(){
-        const data = 
-        {
-          Active: 0,
-          Ban: 0,
-          Email: document.getElementById("Email").value,
-          FullName: document.getElementById("FullName").value,
-          Id: 0,
-          Pwd: document.getElementById("Password").value,
-          Rank: 0,
-          Uname: document.getElementById("Username").value
-        }
-        if(!data.Email.length == 20)
-        {
-          alert("Az emailnak hosszabbnak kell lennie!");
-          return;
-        }
-        axios.post("http://localhost:5001/Service1.svc/UserPostDB",data).then(function(res){
-          console.log(res);
-          
-            alert(res.data.postCustomerResult);
-        })
-      }
 
     var x = document.getElementById("login");
     var y = document.getElementById("register");
@@ -102,11 +61,6 @@
         x.style.left = "50px";
         y.style.left = "450px";
         z.style.left = "0";
-    }
-
-    function registers()
-    {
-        window.location = "bejelentkezve.html";
     }
 
     </script>

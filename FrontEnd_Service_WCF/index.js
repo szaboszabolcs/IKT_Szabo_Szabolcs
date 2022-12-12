@@ -38,31 +38,43 @@ async function deletUser(id){
 
     alert(httpMessage);
 
-    getCustomers();
+    getUsers();
 }
 
 document.getElementById('forms').onsubmit=function (event){
   
     event.preventDefault();
 
-    var nev=event.target.elements.nev.value;
-    var kor=event.target.elements.kor.value;
-    var varos=event.target.elements.varos.value;
+    var uname= event.target.elements.uname.value;
+    var email = event.target.elements.email.value;
+    var password = event.target.elements.email.value;
+    var fullname = event.target.elements.fullname.value;
+    var active = event.target.elements.active.value;
+    var rank = event.target.elements.rank.value;
+    var banned = event.target.elements.banned.value;
+    var reg_time = event.target.elements.reg_time.value;
+    var log_time = event.target.elements.log_time.value;
+
+
 
     if(!state){
-        var bodyCustomer=JSON.stringify({
-            Eletkor: kor,
-            Nev: nev,
-            Varos: varos
+        var bodyUser=JSON.stringify({
+            Active: active,
+            Banned: banned,
+            Email: email,
+            Fullname: fullname,
+            Log_Time: log_time,
+            "Reg_Time": "/Date(1668669971000+0100)/",
+            "Uname": "gipszh"
           });
 
-        postCustomer(bodyCustomer);
+        postUser(bodyUser);
         
     }
     else{
         var id=event.target.elements.idNumber.value;
 
-        var bodyCustomer=JSON.stringify({
+        var bodyUser=JSON.stringify({
             ID: id,
             Nev: nev,
             Eletkor: kor,
@@ -70,19 +82,19 @@ document.getElementById('forms').onsubmit=function (event){
           });
 
     
-        updateCustomer(bodyCustomer);
+        updateUser(bodyUser);
         
     }
 }
 
 //POST Hozzáadás //
-async function postCustomer(bodyCustomer){
+async function postUser(bodyUser){
    
-    var url='http://localhost:3000/Service1.svc/CustomerPostDB';
+    var url='http://localhost:5001/Service1.svc/UserPostDB';
     
     var postUser=await fetch(url,{
         method: "POST",
-        body: bodyCustomer,
+        body: bodyUser,
         headers: {
             'Content-Type': 'application/json'
         }
@@ -97,15 +109,15 @@ async function postCustomer(bodyCustomer){
 
     alert(httpMessage);
 
-    getCustomers();
+    getUsers();
 } 
 
 //UPDATE módosítás //
-async function updateCustomer(bodyCustomer){
+async function updateUser(bodyUser){
     var url='http://localhost:3000/Service1.svc/CustomerPutDB/'
     var upUser=await fetch(url,{
         method: "POST",
-        body:bodyCustomer,
+        body:bodyUser,
         headers:{
             'Content-type':'application/json'
         }
@@ -121,7 +133,7 @@ async function updateCustomer(bodyCustomer){
 
     alert(upResult);
 
-    getCustomers();
+    getUsers();
 }
 
 

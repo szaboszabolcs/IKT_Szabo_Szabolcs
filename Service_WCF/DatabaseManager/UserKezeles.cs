@@ -26,20 +26,21 @@ namespace Service_WCF.AdatbazisKezelese
                 MySqlConnection connection = Kapcsolat.connection;
                 connection.Open();
                 command.Connection = connection;
-                MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                MySqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
                 {
                     User egyUser = new User();
-                    egyUser.ID = reader.GetInt32("ID");
-                    egyUser.Uname = reader.GetString("uname");
-                    egyUser.Email = reader.GetString("email");
-                    egyUser.Password = reader.GetString("pwd");
-                    egyUser.Fullname = reader.GetString("fullname");
-                    egyUser.Active = reader.GetByte("active");
-                    egyUser.Rank = reader.GetInt32("rank");
-                    egyUser.Banned = reader.GetBoolean("ban");
-                    egyUser.Reg_Time = reader.GetDateTime("reg_time");
-                    egyUser.Log_Time = reader.GetDateTime("log_time");
+                    egyUser.ID = dr.GetInt32(0);
+                    egyUser.Uname = dr.GetString(1);
+                    egyUser.Email = dr.GetString(2);
+                    egyUser.Password = dr.GetString(3);
+                    egyUser.Fullname = dr.GetString(4);
+                    egyUser.Active = dr.GetByte(5);
+                    egyUser.Rank = dr.GetInt32(6);
+                    egyUser.Banned = dr.GetBoolean(7);
+                    egyUser.Reg_Time = dr.GetDateTime("reg_time");
+                    egyUser.Log_Time = dr.GetDateTime("log_time");
+
                     rekordok.Add(egyUser);
                     /*egyUser.ID = 0;
                     egyUser.Uname = "sdfs";
@@ -121,7 +122,6 @@ namespace Service_WCF.AdatbazisKezelese
             }
         }
 
-
         public int Update(Rekord rekord)
         {
             try
@@ -200,7 +200,6 @@ namespace Service_WCF.AdatbazisKezelese
 
                 return 0;
             }
-
 
 
 

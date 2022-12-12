@@ -87,7 +87,7 @@ namespace Service_WCF
             Users.Reg_Time = dr.GetDateTime("reg_time");
             Users.Log_Time = dr.GetDateTime("log_time");
 
-            
+
             dr.Close();
             connection.Close();
             return Users;
@@ -112,6 +112,9 @@ namespace Service_WCF
         {
             return UserPostDB(user);
         }
+
+       
+
 
 
         // Módosítás adatbázisban //
