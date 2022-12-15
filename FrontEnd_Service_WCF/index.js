@@ -64,8 +64,10 @@ document.getElementById('forms').onsubmit=function (event){
             Email: email,
             Fullname: fullname,
             Log_Time: log_time,
-            "Reg_Time": "/Date(1668669971000+0100)/",
-            "Uname": "gipszh"
+            Password: password,
+            Rank: rank,
+            Reg_Time: reg_time,
+            Uname: uname
           });
 
         postUser(bodyUser);
@@ -76,9 +78,15 @@ document.getElementById('forms').onsubmit=function (event){
 
         var bodyUser=JSON.stringify({
             ID: id,
-            Nev: nev,
-            Eletkor: kor,
-            Varos: varos
+            Active: active,
+            Banned: banned,
+            Email: email,
+            Fullname: fullname,
+            Log_Time: log_time,
+            Password: password,
+            Rank: rank,
+            Reg_Time: reg_time,
+            Uname: uname
           });
 
     

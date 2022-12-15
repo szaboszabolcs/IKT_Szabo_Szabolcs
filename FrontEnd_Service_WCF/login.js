@@ -1,3 +1,4 @@
+
 function handleClick(){
     username = document.getElementById("Username").value;
     password = document.getElementById("Password").value;
@@ -38,6 +39,5 @@ function handleRegister(){
     axios.post("http://localhost:5001/Service1.svc/UserPostDB",data).then(function(res){
       console.log(res);
       
-        alert(res.data.postUserResult);
     })
 }

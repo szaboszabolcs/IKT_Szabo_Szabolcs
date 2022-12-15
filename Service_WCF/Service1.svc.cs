@@ -54,6 +54,8 @@ namespace Service_WCF
             return userList;
         }
 
+        // Bejelentkezéshez végpont //
+
         public User getUsers(string uname, string pwd)
         {
             MySqlCommand cmd = new MySqlCommand();
@@ -145,12 +147,13 @@ namespace Service_WCF
             AdatbazisKezelese.UserKezeles tableUserKezeles = new AdatbazisKezelese.UserKezeles();
             if (tableUserKezeles.Delete(id) <= 0)
             {
+                return "A felhasználó adatainak törlése megtörtént.";
 
-                return "A felhasználó adatainak törlése sikertelen!";
             }
             else
             {
-                return "A felhasználó adatainak törlése megtörtént.";
+                
+                return "A felhasználó adatainak törlése sikertelen!";
             }
         }
 
@@ -159,112 +162,5 @@ namespace Service_WCF
             return UserDeleteDB(id);
         }
 
-
-
-
-        public User EgyUserPostCS()
-        {
-            User user = new User();
-            user.ID = 1;
-            user.Uname = "minta124";
-            user.Email = "minta2@minta2.com";
-            user.Password = "a";
-            user.Fullname = "Gipsz József";
-            user.Active = 0;
-            user.Rank = 1;
-            user.Banned = false;
-            user.Reg_Time = DateTime.Now;
-            user.Log_Time = DateTime.Now;
-            return user;
-        }
-
-        public User EgyUserPost()
-        {
-            return EgyUserPostCS();
-        }
-
-
-        public List<User> UsersListaja()
-        {
-            return userLista;
-        }
-
-        public List<User> UserListajaCS()
-        {
-            return UsersListaja();
-        }
-
-        public string EgyUserAddCS(User user)
-        {
-            if (user != null && user.ID != null)
-            {
-                int id = (int)user.ID;
-                if (!userIndex.Contains(id))
-                {
-                    userLista.Add(user);
-                    userIndex.Add(id);
-                    return "Adat hozzáadása sikeres.";
-                }
-            }
-            return "Az adat hozzáadása sikertelen!";
-        }
-
-        public string EgyUserAdd(User user)
-        {
-            Console.WriteLine(user);
-            return EgyUserAddCS(user);
-        }
-
-        public string EgyUserPutCS(User user)
-        {
-            if (user != null && user.ID != null)
-            {
-                int id = (int)user.ID;
-                if (userIndex.Contains(id))
-                {
-                    int index = Pozicio(id);
-                    if (index != -1)
-                    {
-                        userLista[index] = user;
-                        return "Adat módosítása sikeres.";
-                    }
-                }
-            }
-            return "Adatok módosítása sikertelen!";
-        }
-
-        public string EgyUserPut(User user)
-        {
-            return EgyUserPutCS(user);
-        }
-
-        public string EgyUserDeleteCS(int ID)
-        {
-            if (ID != 0)
-            {
-                int id = (int)ID;
-                if (userIndex.Contains(id))
-                {
-                    int index = Pozicio(id);
-                    if (index != -1)
-                    {
-                        userLista.RemoveAt(index);
-                        userIndex.Remove(id);
-                        return "Adat törlése sikeres.";
-                    }
-                }
-            }
-            return "Adatok törlése sikertelen";
-        }
-
-        public string EgyUserDelete(int ID)
-        {
-            return EgyUserDeleteCS(ID);
-        }
-
-        public string EgyUserDeleteID(int ID)
-        {
-            return EgyUserDeleteCS(ID);
-        }
     }
 }
