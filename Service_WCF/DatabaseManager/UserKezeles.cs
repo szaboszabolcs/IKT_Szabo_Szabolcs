@@ -30,14 +30,14 @@ namespace Service_WCF.AdatbazisKezelese
                 while (dr.Read())
                 {
                     User egyUser = new User();
-                    egyUser.ID = dr.GetInt32(0);
-                    egyUser.Uname = dr.GetString(1);
-                    egyUser.Email = dr.GetString(2);
-                    egyUser.Password = dr.GetString(3);
-                    egyUser.Fullname = dr.GetString(4);
-                    egyUser.Active = dr.GetByte(5);
-                    egyUser.Rank = dr.GetInt32(6);
-                    egyUser.Banned = dr.GetBoolean(7);
+                    egyUser.ID = dr.GetInt32("id");
+                    egyUser.Uname = dr.GetString("uname");
+                    egyUser.Email = dr.GetString("email");
+                    egyUser.Password = dr.GetString("pwd");
+                    egyUser.Fullname = dr.GetString("fullname");
+                    egyUser.Active = dr.GetByte("active");
+                    egyUser.Rank = dr.GetInt32("rank");
+                    egyUser.Banned = dr.GetBoolean("ban");
                     egyUser.Reg_Time = dr.GetDateTime("reg_time");
                     egyUser.Log_Time = dr.GetDateTime("log_time");
 
