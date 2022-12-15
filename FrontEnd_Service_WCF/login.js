@@ -10,6 +10,7 @@ function handleClick(){
         alert("Sikertelen bejelentkezés!");
       }
       else{
+        alert("Sikeres bejelentkezés! Átirányítás folyamatban.");
         document.getElementById("loginbtn").onclick=location.href="bejelentkezve.html";
       }
     })
