@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bejelentkezve.css">
+    <title>Felhasználók kezelése</title>
+    <link rel="icon" type="image/x-icon" href="./img/profile.png">
+</head>
+<body>
+
+    <ul class="topnav">
+        <li class="right"><a href="./index2.html">Kijelentkezés</a></li>
+        <h3>WCF Felhasználók kezelése</h3>
+      </ul>
+      
+    <hr>
+
+
+
+    <br>
+    <table id="uList"></table><br>
+
+    <hr>
+ 
+    <div id="addCustomer">
+            <form id="forms">
+                <button id="state" type="button">Választ</button><br>
+ 
+                <span id="idField"></span>
+                <strong>Uname:</strong><input type="text" id="nev">
+                <strong>Email:</strong><input type="text" id="varos"><br>
+                <strong>Password:</strong><input type="password" id="password"><br>
+                <strong>Fullname:</strong><input type="text" id="fullname"><br>
+                <strong>Active:</strong><input type="number" id="active"><br>
+                <strong>Rank:</strong> <input type="number" id="rank"><br>
+                <strong>Ban:</strong><input type="text" id="ban"><br>
+                <strong>Reg_Time:</strong><input type="datetime-local" id ="reg_time"><br>
+                <strong>Log_Time:</strong><input type="datetime-local" id ="log_time"><br><br>
+                <button type="submit" id="button1">Felvesz</button>
+            </form>
+     </div>
+ 
+    <div id="delCustomer">
+     <form id="form2">
+         <input type="number" id="number2"><br>
+         <button type="button" id="button2">Töröl</button>
+     </form>
+ </div>
+ 
+ 
+     <script src="./index.js"></script>
+    
+</body>
+</html>
